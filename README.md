@@ -23,3 +23,25 @@
 5. Services: A service is a layer where all the business logic is handled with, instead of overwhleming and engaging the controller layer with the businesss logic. 
     - use nest cli to create a customer service:
     ``` nest g service <directory> ``
+
+6. Folder Structure: We are basically setting up a MVC architecture where things can be handled efficiently with clean code practices and DRY (Dont Repeat Yourself) principle.
+
+7. Express Support Inbuilt: As Nest is built on top of express, you can use the annoattions like req, res, etc. how they work in express to get more freehand in Nest. 
+    - You can do this by using Req and Res decorators from nestjs library and Request and Response object from express. 
+    ``` 
+        getCustomer(@Req() req: Request, @Res() res: Response) {}
+    ```
+
+8. Request and Response: Implemented both the express and nest versions of fetching an id from the service layer.
+    - Nest Way: You can directly return the details if found or throw an HttpException if anything goes wrong. The ParseIntPipe transforms string type to number (int) type.
+    ```
+    @Get('/search/:id')
+    searchCustomerById(@Param('id', ParseIntPipe) id: number) {
+        const customer = this.customersService.findCustomerById(id);
+        if (customer) {
+        return customer;
+        } else {
+        throw new HttpException('Not Found!', HttpStatus.BAD_REQUEST);
+        }
+    }
+    ```
