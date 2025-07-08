@@ -32,7 +32,7 @@
         getCustomer(@Req() req: Request, @Res() res: Response) {}
     ```
 
-8. Request and Response: Implemented both the express and nest versions of fetching an id from the service layer.
+8. GET Request and Response: Implemented both the express and nest versions of fetching an id from the service layer.
     - Nest Way: You can directly return the details if found or throw an HttpException if anything goes wrong. The ParseIntPipe transforms string type to number (int) type.
     ```
     @Get('/search/:id')
@@ -45,3 +45,5 @@
         }
     }
     ```
+9. POST Requests: We can do a better way rather than imitating express way of accesing body from req object.
+    - DTO (Data Transfer Objcet) is think of it like a schema, it defines how data is going to be sent over network from client to server. 
