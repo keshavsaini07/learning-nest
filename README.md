@@ -46,4 +46,11 @@
     }
     ```
 9. POST Requests: We can do a better way rather than imitating express way of accesing body from req object.
-    - DTO (Data Transfer Objcet) is think of it like a schema, it defines how data is going to be sent over network from client to server. 
+    - DTO (Data Transfer Object) is think of it like a schema, it defines how data is going to be sent over network from client to server. 
+    - Its disadvantage is that it doesn't support consistent data.
+    - A schema of how the request body is gonna look like. A dto will not actually look like your model.
+
+10. Validation: It is best practice to validate the correctness of any data sent into a web application. To automatically validate incoming requests, Nest provides several pipes available right out-of-the-box:
+    - ValidationPipe, ParseIntPipe, ParseBoolPipe, ParseArrayPipe, ParseUUIDPipe
+    - The ValidationPipe provides a convenient approach to enforce validation rules for all incoming client payloads, where the specific rules are declared with simple annotations in local class/DTO declarations in each module.
+    - We will use class-validator library to enforce the validation rules on the dto.
