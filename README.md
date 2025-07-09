@@ -69,3 +69,5 @@
 13. Middleware: are useful if you want additional code to be executed right before it reaches the route handler, perform validation, or check if req object has specific header, or modufy request or response objects. It is a good to way separate things that dont belong to the controller logic in a middleware. They also support Dependency Injection.
     - You need to use the configure() function in your module file to apply the middleware to a specific endpoint or the whole controller file.
     - You can use both class-based and function-based middlewares. There is also a thing called global middleware very similar to express using use(). 
+
+14. Exception Filters: Nest comes with a built-in exceptions layer which is responsible for processing all unhandled exceptions across an application. When an exception is not handled by your application code, it is caught by this layer, which then automatically sends an appropriate user-friendly response.
