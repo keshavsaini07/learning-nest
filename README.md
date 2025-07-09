@@ -54,3 +54,15 @@
     - ValidationPipe, ParseIntPipe, ParseBoolPipe, ParseArrayPipe, ParseUUIDPipe
     - The ValidationPipe provides a convenient approach to enforce validation rules for all incoming client payloads, where the specific rules are declared with simple annotations in local class/DTO declarations in each module.
     - We will use class-validator library to enforce the validation rules on the dto.
+    - We also looked into nested validation using @IsNotEmptyObject() from class-validator and @ValidationNested() decorator with @Type() decorator. 
+
+11. Dependency Injection : NestJS uses dependency injection (DI) because it offers significant advantages over directly importing and instantiating classes, especially in larger applications. While importing works for simple cases, DI in NestJS provides better testability, flexibility, and maintainability by decoupling components and allowing for dynamic configuration. 
+    - We will also see how injection in nest works with an example where a service is to be injected through a provider. This will be done in the form of a token carrying the name of service (provide) and it location (useClass).
+
+12. Serialization (Filtering Passwords) : erialization is a process that happens before objects are returned in a network response. This is an appropriate place to provide rules for transforming and sanitizing the data to be returned to the client. For example, sensitive data like passwords should always be excluded from the response.
+    - For this we will setup another controller that will help us exclude certain properties from being sent back.
+    - We will leverage plainToClass, which is a function from the class-transformer library used to convert a plain JavaScript object (like a request body or data from a database) into an instance of a specific class (typically a DTO or an entity).
+    - The primary purpose of the *@Exclude()* decorator is to omit a specific property of a class from the serialized output when an instance of that class is transformed into a plain JavaScript object or JSON. This is particularly useful for: Security, Data Filtering, Reducing Payload Size
+    - *@UseInterceptors()* is a decorator used to bind interceptors to a specific scope within your application. Interceptors are classes that implement the NestInterceptor interface and provide a way to add extra logic before or after method execution, transform responses, or handle errors. 
+    - The *ClassSerializerInterceptor* is a built-in interceptor designed to automatically serialize objects returned from route handlers. It leverages the class-transformer package to achieve this, providing a declarative way to transform and filter data before it's sent as a response to the client.
+
