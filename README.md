@@ -66,3 +66,6 @@
     - *@UseInterceptors()* is a decorator used to bind interceptors to a specific scope within your application. Interceptors are classes that implement the NestInterceptor interface and provide a way to add extra logic before or after method execution, transform responses, or handle errors. 
     - The *ClassSerializerInterceptor* is a built-in interceptor designed to automatically serialize objects returned from route handlers. It leverages the class-transformer package to achieve this, providing a declarative way to transform and filter data before it's sent as a response to the client.
 
+13. Middleware: are useful if you want additional code to be executed right before it reaches the route handler, perform validation, or check if req object has specific header, or modufy request or response objects. It is a good to way separate things that dont belong to the controller logic in a middleware. They also support Dependency Injection.
+    - You need to use the configure() function in your module file to apply the middleware to a specific endpoint or the whole controller file.
+    - You can use both class-based and function-based middlewares. There is also a thing called global middleware very similar to express using use(). 
