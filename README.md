@@ -76,3 +76,8 @@
     - Entities: These are classes that are annotated with @Entity decorator. You can use them to describe your mysql schema for tables. And typeorm will translate the entity from a class into a mysql table.
     - Synchronize: allows you to auto create schemas and of you update things such as column names or types the orm will synchronize automatically. Set this to false in production mode bcoz you can lose data.
     - Migrations: In production mode you use something like migrations, which is when you modify table structure or updating anything youn create a migration for it to prevent data loss.
+
+15. Saving Data to Database: Atleast in Nestjs,it is recommended to saving stuff to db that should be handled in service layer. If you come from a springboot background, you are used to do it in the repository layer. We will carry out everything in the service layer and lets just keep the work for repository layer in future.
+    - In order to actuallly save the user to database, we need to inject the repository. In typeorm, repository is something that helps you interact with database similarly like sequelize.
+
+16. Repository Layer: The repository pattern in an application provides an abstraction layer between the application's business logic and the data access layer (e.g., a database). This pattern encapsulates the logic for retrieving and storing data, making the application more modular, testable, and maintainable.
