@@ -71,3 +71,8 @@
     - You can use both class-based and function-based middlewares. There is also a thing called global middleware very similar to express using use(). 
 
 14. Exception Filters: Nest comes with a built-in exceptions layer which is responsible for processing all unhandled exceptions across an application. When an exception is not handled by your application code, it is caught by this layer, which then automatically sends an appropriate user-friendly response.
+
+14. Connecting MySQL using TypeORM: You can use any other type of ORM you want like Sequelize/Prisma if you want. Its pretty standard to use ORM in production level apps, lets you focus more on interacting with your database without having to worry about writing sql because it provides an api for interaction thus writing code relevant to your codebase, less likely to occur sql injections and preparing your statements for you, and overall increasing your productivity.
+    - Entities: These are classes that are annotated with @Entity decorator. You can use them to describe your mysql schema for tables. And typeorm will translate the entity from a class into a mysql table.
+    - Synchronize: allows you to auto create schemas and of you update things such as column names or types the orm will synchronize automatically. Set this to false in production mode bcoz you can lose data.
+    - Migrations: In production mode you use something like migrations, which is when you modify table structure or updating anything youn create a migration for it to prevent data loss.
