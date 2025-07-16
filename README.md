@@ -83,10 +83,16 @@
 16. Repository Layer: The repository pattern in an application provides an abstraction layer between the application's business logic and the data access layer (e.g., a database). This pattern encapsulates the logic for retrieving and storing data, making the application more modular, testable, and maintainable.
 
 17. Authentication: Setup local authentication using passport with own  username and password. To protect your application and grant access to the users who you want i.e. non authenticated users aren't allowed to access restricted apis. User provides their credentials with a token and validate that in the backend with the database.
-    - The primary function of Guards: to determine whether a request will be handled by the route handler or not.
-    - For each strategy, Passport will call the verify function (implemented with the validate() method in @nestjs/passport) using an appropriate strategy-specific set of parameters. - For the local-strategy, Passport expects a validate() method with the following signature: validate(username: string, password:string): any. You can change the usernameField in LocalStrategy to make any field like *email* below to be used as the username for verification: 
+    - Guards: In NestJS, @UseGuards() is a decorator used to apply one or more Guards to a controller or a specific route handler. Guards are a core feature of NestJS that enable access control and authorization logic. They determine whether a given request should be allowed to proceed to the route handler based on certain conditions. 
+    - For authentication, clients will start by authenticating with a username and password. Once authenticated, the server will issue a JWT that can be sent as a bearer token in an authorization header on subsequent requests to prove authentication. We'll also create a protected route that is accessible only to requests that contain a valid JWT. 
+    - For each strategy, Passport will call the verify function (implemented with the validate() method in @nestjs/passport) using an appropriate strategy-specific set of parameters. 
+    - For the local-strategy, Passport expects a validate() method with the following signature: validate(username: string, password:string): any. You can change the usernameField in LocalStrategy to make any field like *email* below to be used as the username for verification: 
     ``` 
         super({
             usernameField: 'email',
         });
     ```
+
+18. Hashing Passwords: Once you hash something, you cannot get its value back. So, it is a bit different from encryption because you can decrypt something after an encryption using a key. We check by hashing th epassword provided by client and comparing with the hashed password saved in db.
+    - hashSync(): for hashing passwords.
+    - compareSync(): for comparing raw and hasehed passwords.
