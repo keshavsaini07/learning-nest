@@ -96,3 +96,6 @@
 18. Hashing Passwords: Once you hash something, you cannot get its value back. So, it is a bit different from encryption because you can decrypt something after an encryption using a key. We check by hashing th epassword provided by client and comparing with the hashed password saved in db.
     - hashSync(): for hashing passwords.
     - compareSync(): for comparing raw and hasehed passwords.
+
+19. Sessions: Important for any application to have state because by default http request are stateless and they dont tell anything about previous requests like who logged in, who the user is. Sessions will generate an id for that and it will be used as a cookie.
+    - As soon as you modify a session i.e. manually update the session object, that is when its considered as initialized. 
