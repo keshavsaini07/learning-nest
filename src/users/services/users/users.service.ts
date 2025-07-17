@@ -24,7 +24,8 @@ export class UsersService {
   }
 
   getUserById(id: number) {
-    return this.users.find((user) => user.id === id);
+    return this.userRepository.findOneBy({ id });
+    // return this.users.find((user) => user.id === id);
   }
 
   createUser(createUserDto: CreateUserDto) {
@@ -37,5 +38,9 @@ export class UsersService {
 
   findUserByUsername(email: string) {
     return this.userRepository.findOneBy({ email });
+  }
+
+  findUserById(id: number) {
+    return this.userRepository.findOneBy({ id });
   }
 }

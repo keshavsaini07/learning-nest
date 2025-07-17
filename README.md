@@ -99,3 +99,9 @@
 
 19. Sessions: Important for any application to have state because by default http request are stateless and they dont tell anything about previous requests like who logged in, who the user is. Sessions will generate an id for that and it will be used as a cookie.
     - As soon as you modify a session i.e. manually update the session object, that is when its considered as initialized. 
+
+20. Integrating Passport with Sessions:
+    - SerializeUser(): it tells passport how to serialize user to the database
+    - DeserializeUser(): it will take the session, unpack it and take the id or user whatever that is stored in the session. It will search for the user and then provide the user object so you know who is actually authenticated.
+    - We need to use custom Guards by extending the AuthGuard.
+    - Guards can be used to protect our routes.
