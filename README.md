@@ -105,3 +105,21 @@
     - DeserializeUser(): it will take the session, unpack it and take the id or user whatever that is stored in the session. It will search for the user and then provide the user object so you know who is actually authenticated.
     - We need to use custom Guards by extending the AuthGuard.
     - Guards can be used to protect our routes.
+
+21. Session Stores: It is responsible for stroing session data like current logged in users, cart session for a user, etc. You can also store this data on the cookie side but ideally when it comes to authenticating users you do not want to save that stuff on a browser or as a cookie.
+    - We are gonna use connect-typeorm as our session store, you can basically use redis, firebase, or mysql, as we are using typeorm.
+    - You can use other additional options to configure the sessions table like cleanupLimit, ttl, LimitSubquery, onError. 
+
+22. Pipes: A pipe is a class annotated with the @Injectable() decorator, which implements the PipeTransform interface. 
+    - Pipes have two typical use cases: 
+        1. *transformation*: transform input data to the desired form (e.g., from string to integer)
+        2. *validation*: evaluate input data and if valid, simply pass it through unchanged; otherwise, throw an exception
+    
+    - In both cases, pipes operate on the arguments being processed by a controller route handler. Nest interposes a pipe just before a method is invoked, and the pipe receives the arguments destined for the method and operates on them. 
+
+    - Any transformation or validation operation takes place at that time, after which the route handler is invoked with any (potentially) transformed arguments.
+
+23. Guards: A guard is a class annotated with the @Injectable() decorator, which implements the CanActivate interface.
+    - Guards have a single responsibility. They determine whether a given request will be handled by the route handler or not, depending on certain conditions (like permissions, roles, ACLs, etc.) present at run-time. This is often referred to as authorization. 
+    - Middleware is a fine choice for authentication, since things like token validation and attaching properties to the request object are not strongly connected with a particular route context (and its metadata). But middleware, by its nature, is dumb. It doesn't know which handler will be executed after calling the next() function. 
+    - On the other hand, *Guards* have access to the ExecutionContext instance, and thus know exactly what's going to be executed next. They're designed, much like exception filters, pipes, and interceptors, to let you interpose processing logic at exactly the right point in the request/response cycle, and to do so declaratively.

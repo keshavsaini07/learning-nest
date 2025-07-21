@@ -28,4 +28,6 @@ import { PassportModule } from '@nestjs/passport';
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {}
+}
