@@ -123,3 +123,11 @@
     - Guards have a single responsibility. They determine whether a given request will be handled by the route handler or not, depending on certain conditions (like permissions, roles, ACLs, etc.) present at run-time. This is often referred to as authorization. 
     - Middleware is a fine choice for authentication, since things like token validation and attaching properties to the request object are not strongly connected with a particular route context (and its metadata). But middleware, by its nature, is dumb. It doesn't know which handler will be executed after calling the next() function. 
     - On the other hand, *Guards* have access to the ExecutionContext instance, and thus know exactly what's going to be executed next. They're designed, much like exception filters, pipes, and interceptors, to let you interpose processing logic at exactly the right point in the request/response cycle, and to do so declaratively.
+
+24. Interceptors:
+
+25. Testing: Its actually very easy to test your code as nest framework already has a structure for testing purposes. Nest frovides integration with *jest* for testing.
+    - Before we write any test cases, we need to understand how the whole testing framework actually works.
+    - *beforeEach* function will call this callback function in describe block before each test.
+    - So before every single test, what will happen is we are going to create a testing module, basically we will list all the dependencies this testing module requires. 
+    - when we call *module.get()*,  you are trying to retrieve the dependency from the actual container, because remember nestjs is based on dependency injection as there is a container that has all of the dependencies. It takes *type* or *token* as an argument
